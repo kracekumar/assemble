@@ -25,8 +25,6 @@ def print_failure_msg(msg):
 
 
 def task(func=None, *args, **kwargs):
-    #global TASKS
-    print func, args, kwargs
     if not func:
         return partial(task, *args, **kwargs)
 
@@ -49,7 +47,6 @@ def task(func=None, *args, **kwargs):
 def sh(cmd, std_out=True):
     res = run(cmd)
     if res.status_code is 0:
-        #print dir(res)
         print_success_msg(res.std_out) if std_out else None
     else:
         print_failure_msg(res.std_err or res.std_out)
@@ -58,7 +55,6 @@ def sh(cmd, std_out=True):
 
 
 def main():
-    #cur_dir = os.getcwd()
     task_file = "Assemblefile"
     if not os.path.exists(task_file):
         print_failure_msg("{} file is missing".format(task_file))
@@ -76,7 +72,3 @@ def main():
             TASKS[task_name](*args)
         except KeyError:
             print_failure_msg("Task {} doesn't exist".format(task_name))
-
-
-if __name__ == "__main__":
-    main()

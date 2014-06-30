@@ -14,13 +14,9 @@ except ImportError:
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
-requirements = [
-    # TODO: put package requirements here
-]
+requirements = open('requirements.txt').read().splitlines()
 
-test_requirements = [
-    # TODO: put package test requirements here
-]
+test_requirements = list(requirements) + open('test_requirements.txt').read().splitlines()[1:]
 
 setup(
     name='assemble',
@@ -37,6 +33,11 @@ setup(
                  'assemble'},
     include_package_data=True,
     install_requires=requirements,
+    entry_points={
+        'console_scripts': [
+            'assemble = assemble.assemble:main',
+        ]
+    },
     license="BSD",
     zip_safe=False,
     keywords='assemble',

@@ -7,22 +7,14 @@ test_assemble
 
 Tests for `assemble` module.
 """
-
-import unittest
-
+import pytest
 from assemble import assemble
 
 
-class TestAssemble(unittest.TestCase):
+def test_sh_for_success_msg():
+    assert assemble.sh("ls -la") == None
 
-    def setUp(self):
-        pass
 
-    def test_something(self):
-        pass
-
-    def tearDown(self):
-        pass
-
-if __name__ == '__main__':
-    unittest.main()
+def test_sh_for_success_msg():
+    with pytest.raises(SystemExit) as exc:
+        assert assemble.sh("cp foo.py foo1.py")

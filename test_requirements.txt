@@ -1,0 +1,4 @@
+-r requirements.txt
+tox==1.7.1
+pytest==2.5.2
+pytest-cov==1.7.0
