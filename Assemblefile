@@ -1,0 +1,20 @@
+#!/usr/bin/env assemble
+
+from assemble import task, sh
+
+
+@task(default=True)
+def echo():
+    """Default
+    """
+    sh("echo default")
+
+
+@task
+def name(*args):
+    sh("echo {}".format(' '.join(args)))
+
+
+@task
+def df():
+    sh("df -h")

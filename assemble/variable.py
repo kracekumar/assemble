@@ -1,4 +1,4 @@
 #! -*- coding: utf-8 -*-
 
-TASKS = {}
+TASKS_WITH_ARGS = set([])
 DEFAULT_TASKS_KEY = []
