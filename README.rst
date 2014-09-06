@@ -135,9 +135,28 @@ Make like build tool written in Python.
 
    assemble $
 
+
+* Install
+
+::
+   pip install -e git+https://github.com/kracekumar/assemble\#egg\=assemble
+
+* Development
+
+::
+   $pip install -r dev_requirements.txt
+
+* Testing
+
+::
+   $tox
+
+Test coverage is 96%.
+
 * Free software: BSD license
 
 * TODO
 
   - Documentation: http://assemble.readthedocs.org.
   - Distribute in PyPi.
+  - Add `circleci` support.
