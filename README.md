@@ -99,30 +99,29 @@
 ```
 
 ```bash
-    assemble $ assemble --help
-    Usage: assemble [OPTIONS] COMMAND [ARGS]...
 
-    Options:
-    --help  Show this message and exit.
+assemble $ assemble --help
+Usage: assemble [OPTIONS] COMMAND [ARGS]...
 
-    Commands:
-    clean        cleans *.
-    clean_build  Remove build, dist, *egg.
-    clean_pyc
-    cleanpyc     Remove all pyc in the current project.
-    coverage     Run all test using coverage and open the...
-    df
-    dist
-    echo         Default
-    name
-    release      Upload the code to pypi.
-    test         Run all test cases in different python...
-    test_all     Run all test cases in different python...
-    assemble $ assemble
-    default
+Options:
+--help  Show this message and exit.
 
-    assemble $
+Commands:
+clean        cleans *.
+clean_build  Remove build, dist, *egg.
+clean_pyc
+cleanpyc     Remove all pyc in the current project.
+coverage     Run all test using coverage and open the...
+df
+dist
+echo         Default
+name
+release      Upload the code to pypi.
+test         Run all test cases in different python...
+test_all     Run all test cases in different python...
 
+assemble $ assemble
+default
 ```
 
 #### Install
