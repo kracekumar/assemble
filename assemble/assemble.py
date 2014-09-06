@@ -141,7 +141,11 @@ def run_func_from_click_group(click_group, command_name, *args):
     # Pass empty context
     cmd = click_group.get_command({}, command_name)
     if cmd:
-        res = cmd.callback(*args)
+        func = cmd.callback
+        if is_args_in_task(func):
+            res = cmd.callback(*args)
+        else:
+            res = cmd.callback()
         return res or True
 
 

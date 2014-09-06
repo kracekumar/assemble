@@ -142,9 +142,10 @@ def test_main_when_task_is_missing():
 
     assert exc.value.code == 2
 
-# def test_main_for_help_case(capfd):
-#     argv = ["/usr/local/bin/assemble", "--help"]
-#     assemble.main(argv)
 
-#     out, err = capfd.readouterr()
-#     assert "default" in out
+def test_main_for_task_which_doesnt_expect_args(capfd):
+    argv = ["/usr/local/bin/assemble", "df", "foo"]
+    assemble.main(argv)
+
+    out, err = capfd.readouterr()
+    assert 'Filesystem' in out

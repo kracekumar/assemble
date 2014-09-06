@@ -14,6 +14,7 @@ requirements = open('requirements.txt').read().splitlines()
 
 test_requirements = list(requirements) + open('dev_requirements.txt').read().splitlines()[1:]
 
+
 setup(
     name='assemble',
     version='0.1.0',
@@ -47,5 +48,5 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     test_suite='tests',
-    tests_require=test_requirements
+    tests_require=test_requirements,
 )
