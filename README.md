@@ -6,96 +6,96 @@
 
 - `assemble` command, looks for Assemblefile in the current directory.
 
-```
+```python
 
-    #!/usr/bin/env assemble
+#!/usr/bin/env assemble
 
-    from assemble import task, sh
+from assemble import task, sh
 
-    # Random tasks for testing
+# Random tasks for testing
 
-    @task(default=True)
-    def echo():
-        """Default
-        """
-        sh("echo default")
-
-
-    @task
-    def name(*args):
-        sh("echo {}".format(' '.join(args)))
+@task(default=True)
+def echo():
+    """Default
+    """
+    sh("echo default")
 
 
-    @task
-    def df():
-        sh("df -h")
+@task
+def name(*args):
+    sh("echo {}".format(' '.join(args)))
 
 
-    # Useful tasks
-    @task
-    def cleanpyc():
-        """Remove all pyc in the current project.
-        """
-        sh('find . -name "*.pyc" -exec rm -rf {} \;')
-        sh('find . -name "*.pyo" -exec rm -f {} +')
-        sh('find . -name "*~" -exec rm -f {} +')
+@task
+def df():
+    sh("df -h")
 
 
-    @task
-    def clean_build():
-        """Remove build, dist, *egg.info directories
-        """
-        sh('rm -fr build/')
-        sh('rm -fr dist/')
-        sh('rm -fr *.egg-info')
+@task
+def cleanpyc():
+    """Remove all pyc in the current project.
+    """
+    sh('find . -name "*.pyc" -exec rm -rf {} \;')
+    sh('find . -name "*.pyo" -exec rm -f {} +')
+    sh('find . -name "*~" -exec rm -f {} +')
 
 
-    @task
-    def clean_pyc():
-        cleanpyc()
+@task
+def clean_build():
+    """Remove build, dist, *egg.info directories
+    """
+    sh('rm -fr build/')
+    sh('rm -fr dist/')
+    sh('rm -fr *.egg-info')
 
 
-    @task
-    def clean():
-        """cleans *.py[co] files and build, dist, *.egg-info directories
-        """
-        clean_build()
-        cleanpyc()
+@task
+def clean_pyc():
+    cleanpyc()
 
 
-    @task
-    def coverage():
-        """Run all test using coverage and open the coverage report
-        """
-        sh('tox')
-        sh('open htmlcov/index.html')
+@task
+def clean():
+    """cleans *.py[co] files and build, dist, *.egg-info directories
+    """
+    clean_build()
+    cleanpyc()
 
 
-    @task
-    def release():
-        """Upload the code to pypi.
-        """
-        sh('python setup.py sdist upload')
-        sh('python setup.py bdist_wheel upload')
+@task
+def coverage():
+    """Run all test using coverage and open the coverage report
+    """
+    sh('tox')
+    sh('open htmlcov/index.html')
 
 
-    @task
-    def dist():
-        sh('python setup.py sdist')
-        sh('python setup.py bdist_wheel')
-        sh('ls -l dist')
+@task
+def release():
+    """Upload the code to pypi.
+    """
+    sh('python setup.py sdist upload')
+    sh('python setup.py bdist_wheel upload')
 
 
-    @task
-    def test():
-        """Run all test cases in different python version"""
-        test_all()
+@task
+def dist():
+    sh('python setup.py sdist')
+    sh('python setup.py bdist_wheel')
+    sh('ls -l dist')
 
 
-    @task
-    def test_all():
-        """Run all test cases in different python version"""
-        sh('tox')
+@task
+def test():
+    """Run all test cases in different python version"""
+    test_all()
+
+
+@task
+def test_all():
+    """Run all test cases in different python version"""
+    sh('tox')
+
 ```
 
 ```bash
