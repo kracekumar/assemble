@@ -16,7 +16,7 @@ Make like build tool written in Python.
 
 * How to use
 
-- `assemble` . Looks for Assemblefile
+- `assemble` command, looks for Assemblefile in the current directory.
 
 ::
 
@@ -28,86 +28,86 @@ Make like build tool written in Python.
 
    @task(default=True)
    def echo():
-   """Default
-   """
-   sh("echo default")
+       """Default
+       """
+       sh("echo default")
 
 
    @task
    def name(*args):
-   sh("echo {}".format(' '.join(args)))
+       sh("echo {}".format(' '.join(args)))
 
 
    @task
    def df():
-   sh("df -h")
+       sh("df -h")
 
 
    # Useful tasks
    @task
    def cleanpyc():
-   """Remove all pyc in the current project.
-   """
-   sh('find . -name "*.pyc" -exec rm -rf {} \;')
-   sh('find . -name "*.pyo" -exec rm -f {} +')
-   sh('find . -name "*~" -exec rm -f {} +')
+       """Remove all pyc in the current project.
+       """
+       sh('find . -name "*.pyc" -exec rm -rf {} \;')
+       sh('find . -name "*.pyo" -exec rm -f {} +')
+       sh('find . -name "*~" -exec rm -f {} +')
 
 
    @task
    def clean_build():
-   """Remove build, dist, *egg.info directories
-   """
-   sh('rm -fr build/')
-   sh('rm -fr dist/')
-   sh('rm -fr *.egg-info')
+       """Remove build, dist, *egg.info directories
+       """
+       sh('rm -fr build/')
+       sh('rm -fr dist/')
+       sh('rm -fr *.egg-info')
 
 
    @task
    def clean_pyc():
-   cleanpyc()
+       cleanpyc()
 
 
    @task
    def clean():
-   """cleans *.py[co] files and build, dist, *.egg-info directories
-   """
-   clean_build()
-   cleanpyc()
+       """cleans *.py[co] files and build, dist, *.egg-info directories
+       """
+       clean_build()
+       cleanpyc()
 
 
    @task
    def coverage():
-   """Run all test using coverage and open the coverage report
-   """
-   sh('tox')
-   sh('open htmlcov/index.html')
+       """Run all test using coverage and open the coverage report
+       """
+       sh('tox')
+       sh('open htmlcov/index.html')
 
 
    @task
    def release():
-   """Upload the code to pypi.
-   """
-   sh('python setup.py sdist upload')
-   sh('python setup.py bdist_wheel upload')
+       """Upload the code to pypi.
+       """
+       sh('python setup.py sdist upload')
+       sh('python setup.py bdist_wheel upload')
 
 
    @task
    def dist():
-   sh('python setup.py sdist')
-   sh('python setup.py bdist_wheel')
-   sh('ls -l dist')
+       sh('python setup.py sdist')
+       sh('python setup.py bdist_wheel')
+       sh('ls -l dist')
 
 
    @task
    def test():
-   """Run all test cases in different python version"""
-   test_all()
+       """Run all test cases in different python version"""
+       test_all()
 
 
    @task
    def test_all():
-   """Run all test cases in different python version"""
-   sh('tox')
+       """Run all test cases in different python version"""
+       sh('tox')
 
 ::
 
