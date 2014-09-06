@@ -124,6 +124,14 @@ assemble $ assemble
 default
 ```
 
+#### Features
+- Easy to convert any python function into task by adding `@task`.
+- Each task may take any number of arguments from command line by adding `*args` in the function.
+- Easy to run shell commands with `sh` function.
+- Doc string automatically becomes help description.
+- Multiple `default` tasks.
+
+
 #### Install
 
 - `pip install -e git+https://github.com/kracekumar/assemble\#egg\=assemble`
